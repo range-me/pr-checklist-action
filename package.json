@@ -1,0 +1,14 @@
+{
+  "name": "pr-checklist-action",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:range-me/pr-checklist-action.git",
+  "author": "Jiajia Wang <jjwang0506@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.1",
+    "@actions/github": "^2.0.1",
+    "minimatch": "^3.0.4",
+    "yaml": "^1.7.2"
+  }
+}

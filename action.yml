@@ -1,0 +1,5 @@
+name: 'PR Checklist'
+description: 'Create checklist and complete it'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
