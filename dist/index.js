@@ -2690,7 +2690,7 @@ async function run() {
     }
   });
 
-  if (missingTodos.length > 1) {
+  if (missingTodos.length > 0) {
     const newBody = getNewPrBody(pr, missingTodos);
     await client.pulls.update({
       owner: issue.owner,
@@ -2700,7 +2700,7 @@ async function run() {
     });
   }
 
-  const incompleteTodo = missingTodos.length > 1 || pr.body.includes("- [ ]");
+  const incompleteTodo = missingTodos.length > 0 || pr.body.includes("- [ ]");
 
   client.repos.createStatus({
     owner: issue.owner,
