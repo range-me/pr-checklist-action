@@ -33,7 +33,10 @@ async function run() {
     per_page: 100
   })).data.map(file => file.filename);
 
+  console.log("changedFiles: ", changedFiles);
+
   const todos = loadTodos();
+  console.log("todos: ", todos);
 
   const requiredTodos = [...(todos.hardcoded || [])];
 
@@ -43,6 +46,8 @@ async function run() {
     }
   });
 
+  console.log("requiredTodos: ", requiredTodos);
+
   const missingTodos = [];
 
   requiredTodos.forEach(todo => {
@@ -51,6 +56,8 @@ async function run() {
       missingTodos.push(`- [ ] ${todo}`);
     }
   });
+
+  console.log("missingTodos: ", missingTodos);
 
   if (missingTodos.length > 0) {
     const newBody = getNewPrBody(pr, missingTodos);
@@ -63,6 +70,8 @@ async function run() {
   }
 
   const incompleteTodo = missingTodos.length > 0 || pr.body.includes("- [ ]");
+
+  console.log("incompleteTodo: ", incompleteTodo);
 
   client.repos.createStatus({
     owner: issue.owner,
