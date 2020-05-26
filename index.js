@@ -2,6 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const yaml = require("yaml");
 const minimatch = require("minimatch");
+const escapeRegExp = require("lodash.escaperegexp");
 const { readFileSync } = require("fs");
 
 const TITLE = ":robot: Complete the following checklist before merging:";
@@ -46,7 +47,7 @@ async function run() {
   const missingTodos = [];
 
   requiredTodos.forEach(todo => {
-    const reg = new RegExp(`- \\[(x| )?\\] ${todo}`);
+    const reg = new RegExp(`- \\[(x| )?\\] ${escapeRegExp(todo)}`);
     if (!reg.test(pr.body)) {
       missingTodos.push(`- [ ] ${todo}`);
     }
