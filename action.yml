@@ -3,3 +3,7 @@ description: 'Create checklist and complete it'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+inputs:
+  gh-token:
+    description: 'GitHub token to checkout the repository'
+    required: true
